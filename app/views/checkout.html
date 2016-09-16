@@ -1,4 +1,8 @@
 <form name="checkoutForm" ng-submit="submit()">
+  <div class="alert alert-success fade">
+    <strong>Cadastro concluído com sucesso!</strong>
+  </div>
+
   <div class="page-header">
     <h1>Dynamic form</h1>
   </div>
@@ -11,8 +15,12 @@
     </div>
   </div>
 
+  <button ng-show="!isFirstStep" type="button" ng-click="previousStep()" class="btn btn-warning">
+    Anterior
+  </button>
+
   <button ng-show="!isLastStep" type="button" ng-click="nextStep()" class="btn btn-warning">
-    Próxima página
+    Próximo
   </button>
 
   <button ng-show="isLastStep" class="btn btn-success">

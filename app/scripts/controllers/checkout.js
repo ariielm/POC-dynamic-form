@@ -69,23 +69,36 @@ angular.module('pocDynamicFormApp')
       }
     ];
 
-    this.refreshFields = function () {
+    function refreshFields() {
       $scope.fields = getFieldsFromCurrentStep();
-    };
+    }
 
-    $scope.isLastStep = false;
+    $scope.isFirstStep = isFirstStep();
+    $scope.isLastStep = isLastStep();
 
     $scope.fields = getFieldsFromCurrentStep();
+
+    $scope.previousStep = function () {
+      if (!isFirstStep()) {
+        self.currentStep--;
+        refreshFields();
+        $scope.isLastStep = false;
+        $scope.isFirstStep = isFirstStep();
+      }
+    };
 
     $scope.nextStep = function () {
       if (!isLastStep()) {
         self.currentStep++;
-        self.refreshFields();
-        if (isLastStep()){
-          $scope.isLastStep = true;
-        }
+        $scope.isFirstStep = false;
+        refreshFields();
+        $scope.isLastStep = isLastStep();
       }
     };
+
+    function isFirstStep() {
+      return self.currentStep <= self.sessionFields[0].step;
+    }
 
     function isLastStep() {
       return self.currentStep >= self.sessionFields[self.sessionFields.length-1].step;
@@ -101,8 +114,11 @@ angular.module('pocDynamicFormApp')
       return fields;
     }
 
+    $(".alert").removeClass("in").hide();
+
     $scope.submit = function () {
-      console.log($scope.checkoutForm);
+      $(".alert").removeClass("in").show();
+      $(".alert").delay(200).addClass("in").fadeOut(2500);
     };
 
   }]);
