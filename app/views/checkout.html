@@ -1,0 +1,22 @@
+<form name="checkoutForm" ng-submit="submit()">
+  <div class="page-header">
+    <h1>Dynamic form</h1>
+  </div>
+
+  <div ng-repeat="field in fields">
+    <div class="form-group">
+      <label for="{{field.name}}">{{field.label}}</label>
+      <input type="{{field.inputType}}" class="form-control" id="{{field.name}}">
+      <span class="help-block">{{field.help}}</span>
+    </div>
+  </div>
+
+  <button ng-show="!isLastStep" type="button" ng-click="nextStep()" class="btn btn-warning">
+    Próxima página
+  </button>
+
+  <button ng-show="isLastStep" class="btn btn-success">
+    Cadastrar
+  </button>
+
+</form>
