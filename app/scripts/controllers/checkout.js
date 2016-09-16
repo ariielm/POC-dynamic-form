@@ -38,7 +38,7 @@ angular.module('pocDynamicFormApp')
         "label": "Senha",
         "inputType": "password",
         "help": "De 8 à 16 caracteres.",
-        "step": 1
+        "step": 2
       },
       {
         "name":"individualName",
