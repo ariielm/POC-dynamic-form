@@ -20,19 +20,21 @@ angular.module('pocDynamicFormApp')
                     "<div class='input-group-addon'>@zipmail.com.br</div>" +
                   "</div>";
           break;
-        case 'passwordNew':
-          html = "Today is Sunday";
-          break;
         default:
-          html = "<input type='" + field.inputType+ "' class='form-control' id='" + field.name + "'>";
+          html = "<input type=" + field.inputType+ " class=form-control id=" + field.name + ">";
       }
 
       return html;
     }
 
     this.getDirectiveBlur = function (field) {
-      //eval(field.validator);
-      customValidation(field);
+      function validations() {
+        //eval(field.validator);
+        console.log('Invocando validation.js que foi definido pelo sales profile: ' + field.validator);
+        customValidation(field);
+      }
+
+      return validations;
     }
 
     function customValidation(field) {

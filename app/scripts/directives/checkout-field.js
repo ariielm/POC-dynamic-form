@@ -15,7 +15,7 @@ angular.module('pocDynamicFormApp')
 
         element.html(fieldService.getDirectiveContent(scope.field));
 
-        element.on('blur', fieldService.getDirectiveBlur(scope.field));
+        element.find('input')[0].onblur = fieldService.getDirectiveBlur(scope.field);
 
         //console.log(scope);
         //console.log(element);
