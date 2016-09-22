@@ -1,22 +1,18 @@
+<div class="statusBar"><span class="step-{{actualStep}}"></span></div>
+<div class="text-right">
+  <span>{{actualStep}} de 3</span>
+</div>
+
 <form name="checkoutForm" ng-submit="submit()">
   <div class="alert alert-success fade">
     <strong>Cadastro concluído com sucesso!</strong>
   </div>
 
-  <div class="page-header">
-    <h1>Dynamic form</h1>
-  </div>
+  <fieldset>
+    <div checkout-field ng-repeat="field in fields" class="form-group checkoutField step-{{field.step}}" ng-show="actualStep == field.step"  name="{{field.name}}"></div>
+  </fieldset>
 
-
-
-  <div ng-repeat="field in fields">
-    <label for="{{field.name}}">{{field.label}}</label>
-    <checkout-field class="form-group" name="{{field.name}}">
-    </checkout-field>
-    <span class="help-block">{{field.help}}</span>
-  </div>
-
-  <button ng-show="!isFirstStep" type="button" ng-click="previousStep()" class="btn btn-warning">
+  <button type="button" ng-click="previousStep()" class="btn btn-warning" ng-disabled="isFirstStep">
     Anterior
   </button>
 

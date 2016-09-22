@@ -11,21 +11,27 @@ angular.module('pocDynamicFormApp')
   .service('fieldService', function () {
 
     this.getDirectiveContent = function (field) {
-      var html;
+      var finalTemplate;
+      var fieldDetail;
 
       switch (field.name) {
         case 'login':
-          html = "<div class='input-group inputGroupEmail'>" +
+          fieldDetail = "<div class='input-group'>" +
                     "<input type=" + field.inputType + " name=" + field.name + " id=" + field.name + " class='form-control'/>" +
                     "<div class='input-group-addon'>@zipmail.com.br</div>" +
                   "</div>";
           break;
         default:
-          html = "<input type=" + field.inputType+ " class=form-control id=" + field.name + ">";
+          fieldDetail = "<input type=" + field.inputType+ " class=form-control id=" + field.name + ">";
       }
 
-      return html;
-    }
+      finalTemplate = "<label for=" + field.name + ">" + field.label + "</label>" +
+        fieldDetail +
+        "<span class='help-block'>" + field.help + "</span>";
+
+
+      return finalTemplate;
+    };
 
     this.getDirectiveBlur = function (field) {
       function validations() {

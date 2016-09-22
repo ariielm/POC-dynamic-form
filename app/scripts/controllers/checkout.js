@@ -12,6 +12,7 @@ angular.module('pocDynamicFormApp')
 
     var self = this;
     this.currentStep = 1;
+    $scope.actualStep = this.currentStep;
     this.sessionFields = [
       {
         "name":"login",
@@ -38,18 +39,6 @@ angular.module('pocDynamicFormApp')
         "label": "Senha",
         "inputType": "password",
         "help": "De 8 à 16 caracteres.",
-        "step": 2
-      },
-      {
-        "name":"individualName",
-        "mandatory":true,
-        "visible":true,
-        "type":"java.lang.String",
-        "depends":[],
-        "validator":"UOL.platform.fields.individualFullName.check",
-        "label": "Nome",
-        "inputType": "text",
-        "help": "",
         "step": 2
       },
       {
@@ -81,7 +70,10 @@ angular.module('pocDynamicFormApp')
     $scope.previousStep = function () {
       if (!isFirstStep()) {
         self.currentStep--;
-        refreshFields();
+
+        $scope.actualStep = self.currentStep;
+
+        //refreshFields();
         $scope.isLastStep = false;
         $scope.isFirstStep = isFirstStep();
       }
@@ -90,8 +82,11 @@ angular.module('pocDynamicFormApp')
     $scope.nextStep = function () {
       if (!isLastStep()) {
         self.currentStep++;
+
+        $scope.actualStep = self.currentStep;
+
         $scope.isFirstStep = false;
-        refreshFields();
+        //refreshFields();
         $scope.isLastStep = isLastStep();
       }
     };
@@ -107,9 +102,10 @@ angular.module('pocDynamicFormApp')
     function getFieldsFromCurrentStep() {
       var fields = [];
       for (var i = 0; i < self.sessionFields.length; i++) {
-        if (self.sessionFields[i].step == self.currentStep) {
-          fields.push(self.sessionFields[i]);
-        }
+        //if (self.sessionFields[i].step == self.currentStep) {
+        //  fields.push(self.sessionFields[i]);
+        //}
+        fields.push(self.sessionFields[i]);
       }
       return fields;
     }
