@@ -104,8 +104,8 @@ body {
   border-radius: 2px;
 
   span{
-    transition-delay: 0.5s;
-    transition: all linear 0.5s;
+    transition: all linear 0.3s;
+    transition-delay: 1s;
     background-color: #482e64;
     height: 6px;
     border-radius: 2px;
@@ -134,7 +134,7 @@ form{
 }
 
 .checkoutField{
-  transition: all linear 0.5s;
+  transition: all linear 0.3s;
   -ms-transform: translateX(0);
   -webkit-transform: translateX(0);
   transform: translateX(0);
