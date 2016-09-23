@@ -8,9 +8,12 @@
  * Controller of the pocDynamicFormApp
  */
 angular.module('pocDynamicFormApp')
-  .controller('CheckoutCtrl', ['$scope', function ($scope) {
+  .controller('CheckoutCtrl', ['$scope', '$location', function ($scope, $location) {
 
     var self = this;
+
+    $scope.skin = $location.search().skin;
+
     this.currentStep = 1;
     $scope.actualStep = this.currentStep;
     this.sessionFields = [
@@ -58,9 +61,9 @@ angular.module('pocDynamicFormApp')
       }
     ];
 
-    function refreshFields() {
-      $scope.fields = getFieldsFromCurrentStep();
-    }
+    //function refreshFields() {
+    //  $scope.fields = getFieldsFromCurrentStep();
+    //}
 
     $scope.isFirstStep = isFirstStep();
     $scope.isLastStep = isLastStep();

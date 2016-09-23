@@ -127,9 +127,13 @@ form{
   overflow: hidden;
   position: relative;
   margin-top: 20px;
+}
 
-  fieldset{
-    height: 200px;
+#multipleStep{
+  form {
+    fieldset{
+      height: 200px;
+    }
   }
 }
 
